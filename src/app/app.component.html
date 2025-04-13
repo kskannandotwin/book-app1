@@ -1,9 +1,9 @@
 <div class="main">
   <div class="toolbar">
-    <span><h1>Welcome, <font color={{myColor}}>{{ projectTitle }}</font></h1></span>
-    <button [disabled]="status">Click me</button>    
+    <h1>Welcome, <font color={{myColor}}>{{ projectTitle }}</font>
+    </h1>
+
   </div>
-    <input [(ngModel)]="bookName" type="text" id="bookName">{{ bookName }}
-    <button [ngClass]="className" (click)="showData($event)">another one</button>
-    {{message}}
+  <app-book-detail (eventEmitter)="message = $event" [bookData]="bookName"></app-book-detail>
+  {{ message }}
 </div>
