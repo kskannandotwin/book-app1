@@ -7,17 +7,23 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-root',
   templateUrl: './app.component.html',
   imports: [CommonModule, FormsModule],
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   projectTitle = 'Book Application!!';
   myColor = 'yellow';
   status = true;
-  className = '';
-  bookName = 'Angular';
-  message = 'great';
+  message = '';
+  classBlue = '';
+  class: any = 'blue-class';
+  checkNumber: boolean = true;
+  colorBlue = 'blue';
+  bookName = 'Angular Tutorial';
 
-  showData($event: any){
-    this.className = 'rainbow-btn';
+  showData($event: any) {
+    // alert('button is clicked');
+    console.log('yes clicked me');
+    this.message = 'you clicked button';
+    this.classBlue = 'messageClass1';
   }
 }
