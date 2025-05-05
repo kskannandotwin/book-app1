@@ -17,18 +17,10 @@
   color: blue;
 }
 
-.rainbow-btn {
-  background: linear-gradient(
-    90deg,
-    red,
-    orange,
-    yellow,
-    green,
-    cyan,
-    blue,
-    violet
-  );
-  color: white;
-  border: none;
-  transition: all 0.4s ease-in-out;
+.messageClass1 {
+  color: blue;
+}
+
+.messageClass2 {
+  color: red;
 }

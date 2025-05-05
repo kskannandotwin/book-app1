@@ -7,12 +7,24 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  imports: [CommonModule, FormsModule, BookDetailComponent],
-  styleUrl: './app.component.scss'
+  imports: [CommonModule, FormsModule],
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   projectTitle = 'Book Application!!';
   myColor = 'yellow';
-  bookName = 'Learn Angular';
+  status = true;
   message = '';
+  classBlue = '';
+  class: any = 'blue-class';
+  checkNumber: boolean = true;
+  colorBlue = 'blue';
+  bookName = 'Angular Tutorial';
+
+  showData($event: any) {
+    // alert('button is clicked');
+    console.log('yes clicked me');
+    this.message = 'you clicked button';
+    this.classBlue = 'messageClass1';
+  }
 }
