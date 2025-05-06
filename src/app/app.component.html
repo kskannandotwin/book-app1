@@ -1,15 +1,9 @@
 <div class="main">
   <div class="toolbar">
     <span>
-      <h1>Welcome, <font color={{myColor}}>{{ projectTitle }}</font>
-      </h1>
+      <h1>Welcome, <font color={{myColor}}>{{ projectTitle }}</font></h1>
     </span>
   </div>
-  <input [(ngModel)]="bookName" type="text">{{ bookName }}
-
-  <table id="mytable" [attr.colspan]="2"></table>
-  <button (click)="showData($event)">Click me</button>
-  <div [class]="checkNumber ? 'messageClass1' : 'messageClass2'">{{ message }}</div>
-
-  <div [style.color]="colorBlue">This is styled!!</div>
+  <app-book-detail (eventEmitter)="message=$event" [bookName]="bookName"></app-book-detail>
+  {{ message }}
 </div>

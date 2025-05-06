@@ -7,10 +7,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './book-detail.component.scss'
 })
 export class BookDetailComponent {
-  @Input('bookData') bookName: any;
+  @Input() bookName: any;
   @Output() eventEmitter = new EventEmitter();
 
-  myEvent() {
-    this.eventEmitter.emit('The book added successfully');
+  myevent(event: any) {
+    this.eventEmitter.emit('Book added successfully');
   }
 }
