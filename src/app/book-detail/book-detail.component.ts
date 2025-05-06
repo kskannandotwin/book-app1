@@ -12,6 +12,8 @@ export class BookDetailComponent {
   bookStatus: boolean;
   bookLength: number;
   publication = 'abc';
+  backcolor = true;
+  textcolor = true;
   Books: any = [
     { bookName: 'Learn Angular', bookAuthor: 'John' },
     { bookName: 'Learn React', bookAuthor: 'Anne' },
@@ -25,5 +27,22 @@ export class BookDetailComponent {
     } else {
       this.bookStatus = false;
     }
+  }
+
+  get myclasses() {
+    let classes = {
+      myColor: this.backcolor,
+      myTextColor: this.textcolor
+    }
+    return classes;
+  }
+
+  get myStyles() {
+    let styles = {
+      'color': 'blue',
+      'font-size': '20px',
+      'background-color': 'violet'
+    }
+    return styles;
   }
 }

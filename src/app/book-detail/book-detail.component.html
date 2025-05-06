@@ -20,3 +20,12 @@
     <p *ngSwitchCase="'pqr'">published by pqr</p>
     <p *ngSwitchCase="'xyz'">published by xyz</p>
 </div>
+
+<div *ngFor="let book of Books">
+    <div [ngSwitch]="book.bookName">
+        <div *ngSwitchCase="'Learn Angular'" [ngClass]="myclasses">{{ book.bookName }}</div>
+        <div *ngSwitchCase="'Learn React'" [ngStyle]="{'background-color': 'green', 'color': 'white'}">{{ book.bookName }}
+        </div>
+        <div *ngSwitchCase="'Learn Vue'" [ngStyle]="myStyles">{{ book.bookName }}</div>
+    </div>
+</div>
