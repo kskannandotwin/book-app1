@@ -1,3 +1,22 @@
-<p>Details of the book:</p>
-<div>Book Name: {{ bookName }}</div>
-<button (click)="myevent($event)">Click</button>
+<p>book details works!</p>
+<div appYellowBackground>Highlighted by attribute directive</div>
+<!-- <div *ngFor="let book of Books; let i = index">
+    {{i + 1}}.<h2>{{ book.bookName }}</h2>, {{ book.bookAuthor }}
+</div> -->
+<div *ngIf="bookStatus; else elseBlock">
+    <div>
+        Select book:
+        <select>
+            <option *ngFor="let book of Books">{{ book.bookName }}</option>
+        </select>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+    There are no books in the list!.
+</ng-template>
+<div [ngSwitch]="publication">
+    <p *ngSwitchCase="'abc'">published by abc</p>
+    <p *ngSwitchCase="'pqr'">published by pqr</p>
+    <p *ngSwitchCase="'xyz'">published by xyz</p>
+</div>

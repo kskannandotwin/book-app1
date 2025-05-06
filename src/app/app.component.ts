@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BookDetailComponent } from './book-detail/book-detail.component';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,5 +13,4 @@ export class AppComponent {
   projectTitle = 'Book Application!!';
   myColor = 'yellow';
   public bookName = 'Learn Angular';
-  message = '';
 }
