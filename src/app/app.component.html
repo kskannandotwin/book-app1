@@ -1,8 +1,5 @@
-<div class="main">
-  <div class="toolbar">
-    <span>
-      <h1>Welcome, <font color={{myColor}}>{{ projectTitle }}</font></h1>
-    </span>
-  </div>
-  <app-book-detail></app-book-detail>
-</div>
+<ul>
+  <li><a routerLink="/add-book" routerLinkActive="active">Add Book</a></li>
+  <li><a routerLink="/delete-book" routerLinkActive="active">Delete Book</a></li>
+</ul>
+<router-outlet></router-outlet>
