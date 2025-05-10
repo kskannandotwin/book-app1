@@ -1,3 +1,27 @@
-<input type="text" [(ngModel)]="bookName">
-BookName: {{bookName}}
-<router-outlet></router-outlet>
+<div class="container">
+  <h2>Book Form</h2>
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <p>
+        Book Name : <input type="text" class="form-control" formControlName="bookName">
+      </p>
+      <p>
+        Book Author : <input type="text" class="form-control" formControlName="bookAuthor">
+      </p>
+      <p>
+        Book Price : <input type="text" class="form-control" formControlName="bookPrice">
+      </p>
+
+      <div formGroupName="bookDetails">
+        <p>
+          Number of Chapters : <input type="text" class="form-control" formControlName="chapters">
+        </p>
+        <p>
+          Number of Pages : <input type="text" class="form-control" formControlName="pages">
+        </p>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-success">Click</button>
+      </div>
+    </div>
+  </form>
