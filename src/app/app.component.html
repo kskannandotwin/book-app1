@@ -1,5 +1,5 @@
 <ul>
   <li><a routerLink="/add-book" routerLinkActive="active">Add Book</a></li>
-  <li><a routerLink="/delete-book" routerLinkActive="active">Delete Book</a></li>
+  <li><a [routerLink]="['/delete-book', '8']" routerLinkActive="active">Delete Book</a></li>
 </ul>
 <router-outlet></router-outlet>
