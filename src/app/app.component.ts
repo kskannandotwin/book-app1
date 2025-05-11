@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  imports: [RouterOutlet, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'book-app1';
-  bookForm = new FormGroup({
-    bookName: new FormControl(''),
-    bookAuthor: new FormControl(''),
-    bookPrice: new FormControl(''),
-    bookDetails: new FormGroup({
-      chapters: new FormControl(''),
-      pages: new FormControl('')
+  private fb = inject(FormBuilder);
+  bookForm = this.fb.group({
+    bookName: [''],
+    bookAuthor: ['', Validators.required],
+    bookPrice: [''],
+    bookDetails: this.fb.group({
+      chapters: [''],
+      pages: ['']
     })
   });
 
@@ -27,5 +28,7 @@ export class AppComponent {
         pages: '500'
       }
     })
+    console.log('submit called');
+    console.log(this.bookForm.value);
   }
 }

@@ -5,9 +5,15 @@
       <p>
         Book Name : <input type="text" class="form-control" formControlName="bookName">
       </p>
-      <p>
-        Book Author : <input type="text" class="form-control" formControlName="bookAuthor">
-      </p>
+      <div>
+        <label for="bookAuthor">Book Author: </label>
+        <input id="bookAuthor" type="text" class="form-control" formControlName="bookAuthor" />
+      </div>
+      @if (bookForm.invalid) {
+      <div style="color: red">
+        Book Name is required
+      </div>
+      }
       <p>
         Book Price : <input type="text" class="form-control" formControlName="bookPrice">
       </p>
@@ -21,7 +27,7 @@
         </p>
       </div>
       <div>
-        <button type="submit" class="btn btn-success">Click</button>
+        <button type="submit" [disabled]="bookForm.invalid" class="btn btn-success">Click</button>
       </div>
     </div>
   </form>
