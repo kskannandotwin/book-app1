@@ -1,8 +1,30 @@
-<div class="main">
-  <div class="toolbar">
-    <span>
-      <h1>Welcome, <font color={{myColor}}>{{ projectTitle }}</font></h1>
-    </span>
-  </div>
-  <app-book-detail></app-book-detail>
-</div>
+<div class="container">
+  <h2>Book Form</h2>
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div>
+        Book Name : <input type="text" class="form-control" formControlName="bookName">
+      </div>
+      <div>
+        <label for="bookAuthor">Book Author :</label>
+        <input type="text" class="form-control" id="bookAuthor" formControlName="bookAuthor">
+        @if (bookForm.invalid) {
+        <div style="color: red">
+          Book Author is required
+        </div>
+        }
+      </div>
+      <p>
+        Book Price : <input type="text" class="form-control" formControlName="bookPrice">
+      </p>
+
+      <div formGroupName="bookDetails">
+        <p>
+          Name of Chapter : <input type="text" class="form-control" formControlName="chapters">
+        </p>
+      </div>
+      <div>
+        <button type="submit" [disabled]="bookForm.invalid" class="btn btn-success">Click</button>
+      </div>
+    </div>
+  </form>
