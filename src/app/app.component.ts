@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
@@ -14,19 +15,26 @@ export class AppComponent {
     bookName: [''],
     bookAuthor: ['', Validators.required],
     bookPrice: [''],
-    bookDetails: this.fb.group({
-      chapters: [''],
-      pages: ['']
-    })
+    bookDetails: new FormArray([
+      new FormControl('', Validators.required)
+    ])
   });
+
+  get bookDetails(): FormArray {
+    return this.bookForm.get('bookDetails') as FormArray;
+  }
+
+  addChapterField() {
+    this.bookDetails.push(new FormControl('', Validators.required));
+  }
+
+  deleteChapterField(index: number) {
+    this.bookDetails.removeAt(index);
+  }
 
   public onSubmit() {
     this.bookForm.patchValue({
-      bookName: 'Angular',
-      bookDetails: {
-        chapters: '8',
-        pages: '500'
-      }
+      bookName: 'Angular'
     })
     console.log('submit called');
     console.log(this.bookForm.value);

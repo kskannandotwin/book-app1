@@ -17,15 +17,15 @@
       <p>
         Book Price : <input type="text" class="form-control" formControlName="bookPrice">
       </p>
-
-      <div formGroupName="bookDetails">
-        <p>
-          Number of Chapters : <input type="text" class="form-control" formControlName="chapters">
-        </p>
-        <p>
-          Number of Pages : <input type="text" class="form-control" formControlName="pages">
-        </p>
+      <div formArrayName="bookDetails">
+        <div *ngFor="let bookDetail of bookDetails.controls; index as idx">
+          Chapter Name: <input type="text" class="form-control" [formControlName]="idx">
+          <button type="button" (click)="addChapterField()" class="btn btn-success">Add Chapter</button>
+          <button type="button" (click)="deleteChapterField(idx)" class="btn btn-danger">Delete Chapter</button>
+        </div>
       </div>
+
+      
       <div>
         <button type="submit" [disabled]="bookForm.invalid" class="btn btn-success">Click</button>
       </div>
