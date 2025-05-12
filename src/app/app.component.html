@@ -2,18 +2,38 @@
   <h2>Book Form</h2>
   <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <p>
-        Book Name : <input type="text" class="form-control" formControlName="bookName">
-      </p>
       <div>
-        <label for="bookAuthor">Book Author: </label>
-        <input id="bookAuthor" type="text" class="form-control" formControlName="bookAuthor" />
+        <label for="bookName">Book Name: </label>
+        <input id="bookName" type="text" class="form-control" formControlName="bookName" />
       </div>
-      @if (bookForm.invalid) {
-      <div style="color: red">
-        Book Name is required
-      </div>
+
+      @if (bookForm.get('bookName')?.invalid && bookForm.get('bookName')?.touched) {
+      @if (bookForm.get('bookName')?.errors?.['required']) {
+      <div class="alert alert-danger">Name is required</div>
       }
+      @if (bookForm.get('bookName')?.errors?.['minlength']) {
+      <div class="alert alert-danger">Name must be at least 10 characters</div>
+      }
+      @if (bookForm.get('bookName')?.errors?.['nameerror']) {
+      <div class="alert alert-danger">Book name start with Ang</div>
+      }
+      }
+
+      <div formGroupName="authorGroup" confirmAuthor>
+        <div>
+          <label for="bookAuthor">Book Author: </label>
+          <input id="bookAuthor" type="text" class="form-control" formControlName="bookAuthor" />
+        </div>
+        <div>
+          <label for="confirmBookAuthor">Confirm Book Author: </label>
+          <input id="confirmBookAuthor" type="text" class="form-control" formControlName="confirmBookAuthor" />
+        </div>
+      </div>
+      @if (bookForm.get('authorGroup')?.invalid) {
+      <div class="alert alert-danger">Author name mismatch</div>
+      }
+
+
       <p>
         Book Price : <input type="text" class="form-control" formControlName="bookPrice">
       </p>
@@ -25,7 +45,7 @@
         </div>
       </div>
 
-      
+
       <div>
         <button type="submit" [disabled]="bookForm.invalid" class="btn btn-success">Click</button>
       </div>
