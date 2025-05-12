@@ -1,33 +1,40 @@
 <div class="container">
-  <h2>Book Form</h2>
-  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <p>
-        Book Name : <input type="text" class="form-control" formControlName="bookName">
-      </p>
-      <div>
-        <label for="bookAuthor">Book Author: </label>
-        <input id="bookAuthor" type="text" class="form-control" formControlName="bookAuthor" />
-      </div>
-      @if (bookForm.invalid) {
-      <div style="color: red">
-        Book Name is required
-      </div>
-      }
-      <p>
-        Book Price : <input type="text" class="form-control" formControlName="bookPrice">
-      </p>
-      <div formArrayName="bookDetails">
-        <div *ngFor="let bookDetail of bookDetails.controls; index as idx">
-          Chapter Name: <input type="text" class="form-control" [formControlName]="idx">
-          <button type="button" (click)="addChapterField()" class="btn btn-success">Add Chapter</button>
-          <button type="button" (click)="deleteChapterField(idx)" class="btn btn-danger">Delete Chapter</button>
-        </div>
-      </div>
+  <h1>Book Form</h1>
 
-      
-      <div>
-        <button type="submit" [disabled]="bookForm.invalid" class="btn btn-success">Click</button>
-      </div>
+  <form #bookForm="ngForm" (ngSubmit)="submitForm(bookForm)">
+    <div class="form-group">
+      <label for="bookName">Book Name:</label>
+      <input type="text" class="form-control" id="bookName" placeholder="Enter book name" name="bookName"
+        [(ngModel)]="book.bookName" #bookName="ngModel" required>
     </div>
+    <div [hidden]="bookName.valid" class="alert alert-danger">
+      Book name is required
+    </div>
+
+    <br>
+
+    <div class="form-group">
+      <label for="bookAuthor">Book Author:</label>
+      <input type="text" class="form-control" id="bookAuthor" name="bookAuthor" placeholder="Enter book author"
+        [(ngModel)]="book.bookAuthor">
+    </div>
+    <br>
+
+    <div class="form-group">
+      <label for="bookType">Book Type:</label>
+      <select class="form-control" id="bookType" name="bookType" [(ngModel)]="book.bookType">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <br>
+
+    <div class="form-group">
+      <label for="bookPrice">Book Price:</label>
+      <input type="number" class="form-control" id="bookPrice" name="bookPrice" placeholder="Enter book price"
+        [(ngModel)]="book.bookPrice">
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!bookForm.form.valid">Submit</button>
   </form>
+</div>
