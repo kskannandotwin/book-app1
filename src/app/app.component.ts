@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Book } from './book';
 import { FormsModule } from '@angular/forms';
+import { NameValidatorDirective } from './shared/name-validator.directive';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  imports: [CommonModule, FormsModule],
-  styleUrl: './app.component.scss',
+  imports: [CommonModule, FormsModule, NameValidatorDirective],  
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-[x: string]: any;
   title = 'book-app1';
   types: string[] = ['Technology', 'Literature', 'Language'];
 
@@ -23,5 +23,4 @@ export class AppComponent {
     console.log('form data submitted');
     console.log(bookForm);
   }
-
 }
