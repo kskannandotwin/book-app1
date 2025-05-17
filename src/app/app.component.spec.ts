@@ -24,6 +24,17 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, book-app1');
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Hello, book-app1'
+    );
+  });
+
+  it('#clicked() should toggle #isClicked', () => {
+    const comp = new AppComponent();
+    expect(comp.isClicked).toBe(false, 'off at first');
+    comp.clicked();
+    expect(comp.isClicked).toBe(true, 'on after click');
+    comp.clicked();
+    expect(comp.isClicked).toBe(false, 'off after second click');
   });
 });
