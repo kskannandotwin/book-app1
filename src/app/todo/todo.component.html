@@ -1,0 +1,14 @@
+<h1>Todo Application</h1>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" [(ngModel)]="newTodo" placeholder="Add Todo">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" (click)="addTodo(newTodo)">Add</button>
+  </div>
+</div>
+<ul class="list-group">
+  <li *ngFor="let todo of todoService.todos; let i = index" class="list-group-item">
+    {{todo.title}}
+    <button class="btn btn-outline-secondary float-right" type="button" (click)="removeTodo(i)">Remove</button>
+  </li>
+</ul>
